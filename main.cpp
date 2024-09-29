@@ -1,32 +1,33 @@
-
 #include <iostream>
 
 constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS];  // Hibás: N_ELEMENTS elnevezés helyett NELEMENTS lett, ami nem létezik.
-    std::cout << '1-100 ertekek duplazasa';
+    int *b = new int[N_ELEMENTS];
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
 
-    for (int i = 0;)  // Hibás: A for ciklusból hiányzik a feltétel meg az inkrementálás.
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        b[i] = i * 2;
+        b[i] = (i + 1) * 2;
     }
 
-    for (int i = 0; i; i++)  // Hibás: A ciklus feltétele minden alkalommal hamis lesz, mert az i kezdetben 0, ezért nem lép bele, így nem fut le a ciklus.
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        std::cout << "Ertek:";
+        std::cout << "Ertek: " << b[i] << std::endl;
     }
 
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag;
 
-    for (int i = 0; i < N_ELEMENTS, i++)  // Hibás: Pontosvesszõt kellene használni sima vesszõ helyett a for feltételében.
+    int atlag = 0;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
         atlag += b[i];
     }
 
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
-    return 0; // Lekezeletlen memóriaszivárgás
+
+    delete[] b;
+    return 0;
 }
