@@ -25,6 +25,10 @@ int main()
         atlag += b[i];
     }
 
+    
+    std::cout << "asd" << std::endl;
+	
+
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
 
